@@ -163,32 +163,36 @@ function updateDailyReports() {
 
   const liCashSales = document.createElement("li");
   liCashSales.textContent = `Total Cash Sales: ₹${totalCashSales.toFixed(2)}`;
+  liCashSales.classList.add("income"); // Add class for income
   dailyReportList.appendChild(liCashSales);
 
   const liOnlineSales = document.createElement("li");
   liOnlineSales.textContent = `Total Online Sales: ₹${totalOnlineSales.toFixed(2)}`;
+  liOnlineSales.classList.add("income"); // Add class for income
   dailyReportList.appendChild(liOnlineSales);
 
   const liTotalSales = document.createElement("li");
   liTotalSales.textContent = `Total Sales: ₹${totalSales.toFixed(2)}`;
+  liTotalSales.classList.add("income"); // Add class for income
   dailyReportList.appendChild(liTotalSales);
 
   const liExpenses = document.createElement("li");
   liExpenses.textContent = `Total Expenses: ₹${totalExpenses.toFixed(2)}`;
+  liExpenses.classList.add("expense"); // Add class for expenses
   dailyReportList.appendChild(liExpenses);
 
   const liJama = document.createElement("li");
   liJama.textContent = `Total Jama: ₹${totalJama.toFixed(2)}`;
+  liJama.classList.add("income"); // Add class for jama
   dailyReportList.appendChild(liJama);
 
   const liBaki = document.createElement("li");
   liBaki.textContent = `Total Baki: ₹${totalBaki.toFixed(2)}`;
+  liBaki.classList.add("expense"); // Add class for baki
   dailyReportList.appendChild(liBaki);
 
   const liNetCash = document.createElement("li");
   liNetCash.textContent = `Net Cash: ₹${netCash.toFixed(2)}`;
+  liNetCash.classList.add("net-total"); // Add class for net total
   dailyReportList.appendChild(liNetCash);
 }
-
-// Set the default tab
-document.getElementsByClassName("tablink")[0].click();
