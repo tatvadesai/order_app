@@ -83,8 +83,14 @@
                         Malty 250 Ml Can 12 Pcs
                     </option>
                 </select>
-                <input type="number" id="units" placeholder="Units" required />
-                <input type="number" id="price" placeholder="Amount" required />
+                <input
+                    type="number"
+                    id="units"
+                    placeholder="Units"
+                    min="0"
+                    required
+                />
+                <input type="number" id="price" placeholder="Amount" min="0" />
                 <select id="paymentMethod" required>
                     <option value="">Select payment method</option>
                     <option value="cash">Cash</option>
@@ -108,6 +114,7 @@
                     type="number"
                     id="jamaAmount"
                     placeholder="Amount"
+                    min="0"
                     required
                 />
                 <button type="submit">Add Jama</button>
@@ -128,6 +135,7 @@
                     type="number"
                     id="bakiAmount"
                     placeholder="Amount"
+                    min="0"
                     required
                 />
                 <button type="submit">Add Baki</button>
@@ -148,6 +156,7 @@
                     type="number"
                     id="amount"
                     placeholder="Amount"
+                    min="0"
                     required
                 />
                 <button type="submit">Add Expense</button>
