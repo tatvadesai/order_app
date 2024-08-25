@@ -23,7 +23,10 @@ function openTab(tabName) {
 openTab("Sales");
 
 // Handle Sales
-const sales = {};
+const sales = {
+  cash: {},
+  online: {},
+};
 
 document
   .getElementById("saleForm")
@@ -32,14 +35,14 @@ document
     const product = document.getElementById("product").value;
     const price = parseFloat(document.getElementById("price").value);
     const units = parseFloat(document.getElementById("units").value);
+    const paymentMethod = document.getElementById("paymentMethod").value;
     const totalSaleAmount = price * units;
 
-    if (sales[product]) {
-      sales[product].totalAmount += totalSaleAmount;
-      sales[product].totalUnits += units;
-    } else {
-      sales[product] = { totalAmount: totalSaleAmount, totalUnits: units };
+    if (!sales[paymentMethod][product]) {
+      sales[paymentMethod][product] = { totalAmount: 0, totalUnits: 0 };
     }
+    sales[paymentMethod][product].totalAmount += totalSaleAmount;
+    sales[paymentMethod][product].totalUnits += units;
 
     updateSalesList();
     document.getElementById("saleForm").reset();
@@ -49,10 +52,12 @@ function updateSalesList() {
   const salesList = document.getElementById("salesList");
   salesList.innerHTML = "";
 
-  for (const product in sales) {
-    const li = document.createElement("li");
-    li.textContent = `${product}: ₹${sales[product].totalAmount.toFixed(2)} for ${sales[product].totalUnits} units`;
-    salesList.appendChild(li);
+  for (const method in sales) {
+    for (const product in sales[method]) {
+      const li = document.createElement("li");
+      li.textContent = `${product}: ₹${sales[method][product].totalAmount.toFixed(2)} for ${sales[method][product].totalUnits} units (${method})`;
+      salesList.appendChild(li);
+    }
   }
 }
 
@@ -142,18 +147,31 @@ function updateDailyReports() {
   const dailyReportList = document.getElementById("dailyReportList");
   dailyReportList.innerHTML = "";
 
-  const totalSales = Object.values(sales).reduce(
+  const totalCashSales = Object.values(sales.cash).reduce(
     (a, b) => a + b.totalAmount,
     0,
   );
+  const totalOnlineSales = Object.values(sales.online).reduce(
+    (a, b) => a + b.totalAmount,
+    0,
+  );
+  const totalSales = totalCashSales + totalOnlineSales;
   const totalExpenses = expenses.reduce((a, b) => a + b.amount, 0);
   const totalJama = jamaEntries.reduce((a, b) => a + b.amount, 0);
   const totalBaki = bakiEntries.reduce((a, b) => a + b.amount, 0);
   const netCash = totalSales - totalExpenses + totalJama - totalBaki;
 
-  const liSales = document.createElement("li");
-  liSales.textContent = `Total Sales: ₹${totalSales.toFixed(2)}`;
-  dailyReportList.appendChild(liSales);
+  const liCashSales = document.createElement("li");
+  liCashSales.textContent = `Total Cash Sales: ₹${totalCashSales.toFixed(2)}`;
+  dailyReportList.appendChild(liCashSales);
+
+  const liOnlineSales = document.createElement("li");
+  liOnlineSales.textContent = `Total Online Sales: ₹${totalOnlineSales.toFixed(2)}`;
+  dailyReportList.appendChild(liOnlineSales);
+
+  const liTotalSales = document.createElement("li");
+  liTotalSales.textContent = `Total Sales: ₹${totalSales.toFixed(2)}`;
+  dailyReportList.appendChild(liTotalSales);
 
   const liExpenses = document.createElement("li");
   liExpenses.textContent = `Total Expenses: ₹${totalExpenses.toFixed(2)}`;

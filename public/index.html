@@ -24,21 +24,20 @@
             <form id="saleForm">
                 <select id="product" required>
                     <option value="">Select a product</option>
-
-                    <option value="JEERA 160 ML">JEERA 160 ML</option>
-                    <option value="ORANGE 160 ML">ORANGE 160 ML</option>
-                    <option value="GREEN-G 160 ML">GREEN-G 160 ML</option>
-                    <option value="Limun 160 Ml">Limun 160 Ml</option>
-                    <option value="Guava 160 Ml">Guava 160 Ml</option>
-                    <option value="Limpoo 160 Ml">Limpoo 160 Ml</option>
-                    <option value="Love Apple 160 Ml">Love Apple 160 Ml</option>
-                    <option value="Lychee 160 Ml">Lychee 160 Ml</option>
-                    <option value="Malty 160 Ml">Malty 160 Ml</option>
-                    <option value="Pepyo 160 Ml">Pepyo 160 Ml</option>
-                    <option value="Freshter 160 Ml">Freshter 160 Ml</option>
                     <option value="Mozzy Aspetic 125 Ml">
                         Mozzy Aspetic 125 Ml
                     </option>
+                    <option value="Freshter 160 Ml">Freshter 160 Ml</option>
+                    <option value="GREEN-G 160 ML">GREEN-G 160 ML</option>
+                    <option value="Guava 160 Ml">Guava 160 Ml</option>
+                    <option value="JEERA 160 ML">JEERA 160 ML</option>
+                    <option value="Limpoo 160 Ml">Limpoo 160 Ml</option>
+                    <option value="Limun 160 Ml">Limun 160 Ml</option>
+                    <option value="Love Apple 160 Ml">Love Apple 160 Ml</option>
+                    <option value="Lychee 160 Ml">Lychee 160 Ml</option>
+                    <option value="Malty 160 Ml">Malty 160 Ml</option>
+                    <option value="ORANGE 160 ML">ORANGE 160 ML</option>
+                    <option value="Pepyo 160 Ml">Pepyo 160 Ml</option>
                     <option value="Davat Water 200 Ml">
                         Davat Water 200 Ml
                     </option>
@@ -85,6 +84,11 @@
                 </select>
                 <input type="number" id="units" placeholder="Units" required />
                 <input type="number" id="price" placeholder="Amount" required />
+                <select id="paymentMethod" required>
+                    <option value="">Select payment method</option>
+                    <option value="cash">Cash</option>
+                    <option value="online">Online</option>
+                </select>
                 <button type="submit">Add Sale</button>
             </form>
             <ul id="salesList"></ul>
