@@ -6,6 +6,10 @@ body {
     color: #333;
 }
 
+h1 {
+    text-align: center;
+}
+
 .tabs {
     display: flex;
     justify-content: center;
@@ -85,4 +89,16 @@ li {
 
 .net-total {
     color: darkkhaki;
+}
+
+.footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
