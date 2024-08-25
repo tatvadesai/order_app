@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prit Enterprise Order App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="tabs">
+        <button class="tablink" onclick="openTab('Sales')">Sales</button>
+        <button class="tablink" onclick="openTab('Jama')">Jama</button>
+        <button class="tablink" onclick="openTab('Baki')">Baki</button>
+        <button class="tablink" onclick="openTab('Expenses')">Expenses</button>
+        <button class="tablink" onclick="openTab('Reports')">Daily Reports</button>
+    </div>
+
+    <div id="Sales" class="tabcontent">
+        <h2>Add Sale</h2>
+        <form id="saleForm" action="/add-sale" method="POST">
+            <input type="text" name="product" placeholder="Product Name" required>
+            <input type="number" name="amount" placeholder="Amount" required>
+            <button type="submit">Add Sale</button>
+        </form>
+    </div>
+
+    <div id="Jama" class="tabcontent">
+        <h2>Add Jama</h2>
+        <form action="/add-jama" method="POST">
+            <input type="number" name="amount" placeholder="Amount" required>
+            <button type="submit">Add Jama</button>
+        </form>
+    </div>
+
+    <div id="Baki" class="tabcontent">
+        <h2>Add Baki</h2>
+        <form action="/add-baki" method="POST">
+            <input type="number" name="amount" placeholder="Amount" required>
+            <input type="text" name="party" placeholder="Party Name" required>
+            <button type="submit">Add Baki</button>
+        </form>
+    </div>
+
+    <div id="Expenses" class="tabcontent">
+        <h2>Add Expense</h2>
+        <form action="/add-expense" method="POST">
+            <input type="text" name="description" placeholder="Description" required>
+            <input type="number" name="amount" placeholder="Amount" required>
+            <button type="submit">Add Expense</button>
+        </form>
+    </div>
+
+    <div id="Reports" class="tabcontent">
+        <h2>Daily Report</h2>
+        <button onclick="getDailyReport()">Get Daily Report</button>
+        <pre id="reportContent"></pre>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        function getDailyReport() {
+            fetch('/daily-report')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('reportContent').textContent = JSON.stringify(data, null, 2);
+            });
+        }
+
+        // Default tab
+        document.getElementsByClassName('tablink')[0].click();
+    </script>
+</body>
+</html>
