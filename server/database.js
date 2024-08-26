@@ -7,7 +7,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: process.env.MYSQL_PASSWORD, // Use environment variable for password
-  database: 'order_app'
+  database: 'order_app'  // Replace with your MySQL database name
 });
 
 db.connect((err) => {
