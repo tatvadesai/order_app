@@ -1,82 +1,53 @@
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 h1 {
     text-align: center;
+    color: #333;
 }
 
 .tabs {
     display: flex;
     justify-content: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 .tablink {
-    background-color: transparent;
+    background-color: #ddd;
     border: none;
-    padding: 15px 25px;
+    outline: none;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .tablink.active {
-    background-color: #007bff;
+    background-color: #555;
     color: white;
 }
 
 .tabcontent {
     display: none;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.tabcontent h2 {
-    margin-top: 0;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-input[type="number"],
-input[type="text"],
-select {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-ul {
-    list-style: none;
+.tabcontent ul {
+    list-style-type: none;
     padding: 0;
 }
 
-li {
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
+.tabcontent ul li {
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 .income {
@@ -88,17 +59,6 @@ li {
 }
 
 .net-total {
-    color: darkkhaki;
-}
-
-.footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 10px 0;
-    background-color: #f1f1f1;
+    font-weight: bold;
     color: #333;
-    font-size: 14px;
-    position: relative;
-    width: 100%;
-    bottom: 0;
 }
